@@ -1,0 +1,1 @@
+{"ast":null,"code":"import Home from './Home';\nexport default Home;","map":{"version":3,"sources":["C:/Users/imachado/Desktop/next-boilerplate/src/pages/index.tsx"],"names":["Home"],"mappings":"AAAA,OAAOA,IAAP,MAAiB,QAAjB;AAEA,eAAeA,IAAf","sourcesContent":["import Home from './Home';\r\n\r\nexport default Home;"]},"metadata":{},"sourceType":"module"}

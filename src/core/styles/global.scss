@@ -1,0 +1,78 @@
+@import '~nextweb-ui-kit/dist/core/styles/normalize';
+@import '~nextweb-ui-kit/dist/core/styles/mq';
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+}
+
+html {
+  height: 100%;
+  width: 100%;
+  font-family: 'Roboto';
+  font-size: 100% !important;
+
+  @include lg {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  }
+
+  @include xl {
+    font-size: 100% !important;
+  }
+
+  body {
+    height: inherit;
+    width: inherit;
+
+    #wrapper {
+      min-height: 100vh;
+      overflow: hidden;
+    }
+  }
+}
+
+img {
+  pointer-events: none;
+}
+
+p {
+  font-size: 1rem;
+  line-height: 200%;
+}
+
+small {
+  font-size: calc(100% - 25%);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 100%;
+  font-weight: normal;
+  small {
+    font-size: calc(100% - 40%);
+    line-height: 100%;
+  }
+}
+
+h1 {
+  font-size: 4rem;
+}
+h2 {
+  font-size: 3.5rem;
+}
+h3 {
+  font-size: 3rem;
+}
+h4 {
+  font-size: 2.5rem;
+}
+h5 {
+  font-size: 2rem;
+}
+h6 {
+  font-size: 1.5rem;
+}

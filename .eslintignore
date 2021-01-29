@@ -1,0 +1,10 @@
+.archive/*
+.next/*
+.vscode/*
+node_modules/*
+out/*
+build/*
+dist/*
+public/*
+src/react-app-env.d.ts
+src/serviceWorker.ts

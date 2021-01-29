@@ -1,0 +1,27 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  input:focus {
+    border-color: green
+  }
+
+  &__input {
+    width: 70%;
+    outline: 0;
+    border-width: 0 0 2px;
+    border-color: blue;
+    margin-left: .5rem;
+    margin-right: 2rem;
+  }
+
+  &__button {
+    width: 8rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    background-color: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+}
