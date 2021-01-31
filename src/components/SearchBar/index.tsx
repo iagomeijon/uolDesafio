@@ -1,17 +1,16 @@
 import { useState } from 'react';
-import useGitHub from '@core/hooks/useGitHub';
 import { searchBarProps } from './interface';
 import styles from './styles.module.scss';
 
 const searchBar = (props: searchBarProps) => {
-  const [user, setUser] = useState<string>('');
-  const { actions } = useGitHub();
+  const {getSearch} = props;
+  const [searchText, setSearchText] = useState<string>('');
   const handleInput = (event) => {
-    setUser(event.target.value);
+    setSearchText(event.target.value);
   };
 
-  const search = () => {
-    actions.getUser(user);
+  const handleSubmit = () => {
+    getSearch(searchText)
   };
 
   return (
@@ -20,7 +19,7 @@ const searchBar = (props: searchBarProps) => {
       <button
         className={styles.container__button}
         type="submit"
-        onClick={search}
+        onClick={handleSubmit}
       >
         Buscar
       </button>
