@@ -3,14 +3,14 @@ import { searchBarProps } from './interface';
 import styles from './styles.module.scss';
 
 const searchBar = (props: searchBarProps) => {
-  const {getSearch} = props;
+  const { getSearch } = props;
   const [searchText, setSearchText] = useState<string>('');
   const handleInput = (event) => {
     setSearchText(event.target.value);
   };
 
   const handleSubmit = () => {
-    getSearch(searchText)
+    getSearch(searchText);
   };
 
   return (

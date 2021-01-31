@@ -76,3 +76,16 @@ h5 {
 h6 {
   font-size: 1.5rem;
 }
+
+
+button:active {
+  border: none;
+  outline:none;
+
+  }
+  
+  button:focus {
+  border: none;
+  outline:none;
+  
+  }
