@@ -1,8 +1,9 @@
 import { UserCardProps } from './interface';
+import RepositoryList from '../RepositoryList';
 import styles from './styles.module.scss';
 
 const UserCard = (props: UserCardProps) => {
-  const { user, handdleRepos, handleStarred } = props;
+  const { user, repositories, handdleRepos, handleStarred } = props;
 
   return (
     <div className={styles.container}>
@@ -17,7 +18,7 @@ const UserCard = (props: UserCardProps) => {
       <div className={styles.container__row}>
         <div>
           <p className={styles.container__infoText}>
-            Repositorios publicos: {user.public_repos}
+            Repositórios públicos: {user.public_repos}
           </p>
           <p className={styles.container__infoText}>
             Seguidores: {user.followers}
@@ -40,6 +41,11 @@ const UserCard = (props: UserCardProps) => {
           </button>
         </div>
       </div>
+      {repositories && (
+        <div className={styles.container__listBox}>
+          <RepositoryList list={repositories} />
+        </div>
+      )}
     </div>
   );
 };

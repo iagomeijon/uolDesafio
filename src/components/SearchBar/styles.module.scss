@@ -3,6 +3,8 @@
   flex-direction: row;
   width: 100%;
   margin-bottom: 5rem;
+  align-items: center;
+  justify-content: center;
   input:focus {
     border-color: green
   }

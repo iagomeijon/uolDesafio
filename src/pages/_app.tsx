@@ -10,9 +10,9 @@ class ContingencyApp extends App {
     const wrapper = (
       <>
         <Head>
-          <title>BOILERPLATE</title>
+          <title>UOL</title>
           <link rel="shortcut icon" href="/static/favicon.ico" />
-          <meta name="description" content="BOILERPLATE" />
+          <meta name="description" content="UOL" />
           <meta charSet="utf-8" />
           <meta
             name="viewport"
