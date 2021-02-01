@@ -1,7 +1,7 @@
 {
   "name": "UOL",
   "version": "0.1.0",
-  "private": true,
+  "license": "UNLICENSED",
   "scripts": {
     "clean": "rm -rfv yarn.lock pakage.lock.json dist/ node_modules/",
     "build": "react-scripts build",
@@ -16,16 +16,6 @@
     "test": "jest",
     "test:watch": "yarn test -- --watch",
     "test:ci": "yarn test -- --coverage --runInBand"
-  },
-  "eslintConfig": {
-    "extends": "react-app",
-    "plugins": [
-      "react-hooks"
-    ],
-    "rules": {
-      "react-hooks/rules-of-hooks": "error",
-      "react-hooks/exhaustive-deps": "warn"
-    }
   },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
@@ -58,15 +48,5 @@
     "lint-staged": "^10.2.11",
     "prettier": "^2.0.5",
     "typescript": "^3.9.6"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
-  "lint-staged": {
-    "**/*.{js,ts,tsx}": [
-      "eslint --fix"
-    ]
   }
 }
