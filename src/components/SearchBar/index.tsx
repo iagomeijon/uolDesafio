@@ -15,7 +15,11 @@ const searchBar = (props: searchBarProps) => {
 
   return (
     <div className={styles.container}>
-      <input className={styles.container__input} onChange={handleInput} />
+      <input
+        className={styles.container__input}
+        onChange={handleInput}
+        placeholder="Pesquise o login de um usuário gitHub"
+      />
       <button
         className={styles.container__button}
         type="submit"

@@ -1,5 +1,4 @@
-@import '~nextweb-ui-kit/dist/core/styles/normalize';
-@import '~nextweb-ui-kit/dist/core/styles/mq';
+
 
 * {
   box-sizing: border-box;
@@ -12,13 +11,7 @@ html {
   font-family: 'Roboto';
   font-size: 100% !important;
 
-  @include lg {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-  }
-
-  @include xl {
-    font-size: 100% !important;
-  }
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 
   body {
     height: inherit;

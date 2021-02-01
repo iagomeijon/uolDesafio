@@ -1,8 +1,8 @@
 import React from 'react';
 import useGitHub from '@core/hooks/useGitHub';
-import Loading from '@components/Loading';
 import UserCard from '@components/UserCard';
 import UserNotFound from '@components/UserNotFound';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import SerachBar from '@components/SearchBar';
 import styles from './styles.module.scss';
 
@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <div className={styles.main}>
       <SerachBar getSearch={search} />
-      {state.isLoading && <Loading />}
+      {state.isLoading && <CircularProgress size={60} />}
       {state.user && (
         <UserCard
           user={state.user}

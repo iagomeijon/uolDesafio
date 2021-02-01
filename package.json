@@ -1,5 +1,5 @@
 {
-  "name": "desafio UOL",
+  "name": "UOL",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -27,33 +27,14 @@
       "react-hooks/exhaustive-deps": "warn"
     }
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all",
-      "since 2010"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version",
-      "since 2010",
-      ">0.2%",
-      "not dead",
-      "ie >= 9"
-    ]
-  },
   "dependencies": {
+    "@material-ui/core": "^4.11.3",
     "axios": "^0.21.1",
     "clsx": "^1.1.1",
     "env-cmd": "^10.1.0",
     "js-cookie": "^2.2.1",
     "next": "^10.0.3",
-    "nextweb-core": "^1.0.0-rc.3",
-    "nextweb-ui-kit": "1.1.0",
     "react": "16.13.1",
-    "react-countdown": "^2.3.1",
     "react-dom": "16.13.1",
     "sass": "^1.26.10",
     "serve": "^11.3.2"
