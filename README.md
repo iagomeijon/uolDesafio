@@ -1,23 +1,20 @@
 # nextweb-boilerplate
 
-Bem vindo ao Boilerplate para criação de Apps CSR do Next
+Bem vindo!
 
 ## 🚀 Getting Started
-
-Este boilerplate foi construído utilizando [Create React App](https://create-react-app.dev/docs/getting-started/) e o [nextweb-ui-kit](https://bitbucket.prebanco.com.br/projects/NW/repos/nextweb-ui-kit/browse).
 
 Apenas instale as dependências e rode o projeto utilizando o yarn:
 
     yarn
-    yarn start
+    yarn start ou yarn dev
 
-E comece a codar :)
+E comece a utilizar :)
 
 ## Ambiente
 
 É necessário a seguinte lista de software para rodar e desenvolver essa aplicação:
-
-- Docker ^2.2.0
+- yarn ^1.22
 - Node ^12
 - npm ^6
 - VScode
