@@ -15,12 +15,13 @@ const Home = () => {
   return (
     <div className={styles.main}>
       <SerachBar getSearch={search} />
-      {state.isLoading && <CircularProgress size={60} />}
+      {state.loadingSearch && <CircularProgress size={60} />}
       {state.user && (
         <UserCard
           user={state.user}
+          isLoading={state.isLoading}
           repositories={state.repositories}
-          handdleRepos={actions.getRepos}
+          handdleRepos={actions.getRepositoriesList}
           handleStarred={() => alert('starred')}
         />
       )}

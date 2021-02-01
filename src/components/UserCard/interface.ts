@@ -5,4 +5,5 @@ export interface UserCardProps {
   repositories: Repository[];
   handdleRepos: () => void;
   handleStarred: () => void;
+  isLoading: boolean;
 }

@@ -7,20 +7,24 @@ const RepositoryList = (props: RepositoryListProps) => {
   return (
     <div className={styles.container}>
       <p className={styles.container__title}>Repositórios:</p>
-      <ul>
-        {list.map((_repository, index) => {
-          return (
-            <a
-              key={index}
-              href={_repository.html_url}
-              target="_blank"
-              rel="noreferrer"
-            >
-              <li>{_repository.name}</li>
-            </a>
-          );
-        })}
-      </ul>
+      {list.length > 0 ? (
+        <ul>
+          {list.map((_repository, index) => {
+            return (
+              <a
+                key={index}
+                href={_repository.html_url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                <li>{_repository.name}</li>
+              </a>
+            );
+          })}
+        </ul>
+      ) : (
+        <p>Sem repositórios encontrados :( </p>
+      )}
     </div>
   );
 };

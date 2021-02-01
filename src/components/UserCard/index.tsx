@@ -1,9 +1,11 @@
-import { UserCardProps } from './interface';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import RepositoryList from '../RepositoryList';
+import { UserCardProps } from './interface';
+
 import styles from './styles.module.scss';
 
 const UserCard = (props: UserCardProps) => {
-  const { user, repositories, handdleRepos, handleStarred } = props;
+  const { user, repositories, isLoading, handdleRepos, handleStarred } = props;
 
   return (
     <div className={styles.container}>
@@ -41,11 +43,13 @@ const UserCard = (props: UserCardProps) => {
           </button>
         </div>
       </div>
-      {repositories && (
-        <div className={styles.container__listBox}>
-          <RepositoryList list={repositories} />
-        </div>
-      )}
+      <div className={styles.container__listBox}>
+        {isLoading ? (
+          <CircularProgress size={35} />
+        ) : (
+          repositories && <RepositoryList list={repositories} />
+        )}
+      </div>
     </div>
   );
 };

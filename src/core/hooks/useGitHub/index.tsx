@@ -7,9 +7,10 @@ export default function useGitHub() {
   const [user, setUser] = useState<User | null>(null);
   const [userNotFound, setuUserNotFound] = useState<boolean>(false);
   const [repositories, setRepositories] = useState<Repository[] | null>(null);
+  const [loadingSearch, setLoadingSearch] = useState<boolean>(false);
 
   async function getUser(userSearch: string): Promise<void> {
-    setIsLoading(true);
+    setLoadingSearch(true);
     setuUserNotFound(false);
     setUser(null);
     await axios
@@ -18,11 +19,12 @@ export default function useGitHub() {
         setUser(res.data);
       })
       .catch((err) => setuUserNotFound(true))
-      .finally(() => setIsLoading(false));
+      .finally(() => setLoadingSearch(false));
   }
 
-  async function getRepos(): Promise<void> {
+  async function getRepositoriesList(): Promise<void> {
     setIsLoading(true);
+    setRepositories(null);
     if (user) {
       await axios
         .get(`https://api.github.com/users/${user.login}/repos`)
@@ -34,9 +36,24 @@ export default function useGitHub() {
     }
   }
 
+  async function getStarredList(): Promise<void> {
+    setIsLoading(true);
+    setRepositories(null);
+    if (user) {
+      await axios
+        .get(`https://api.github.com/users/${user.login}/starred`)
+        .then((res) => {
+          setRepositories(res.data);
+        })
+        .catch()
+        .finally(() => setIsLoading(false));
+    }
+  }
+
   function clean(): void {
     setuUserNotFound(false);
     setIsLoading(false);
+    setLoadingSearch(false);
     setRepositories(null);
     setUser(null);
   }
@@ -47,10 +64,12 @@ export default function useGitHub() {
       user,
       userNotFound,
       repositories,
+      loadingSearch,
     },
     actions: {
       getUser,
-      getRepos,
+      getRepositoriesList,
+      getStarredList,
       clean,
     },
   };
