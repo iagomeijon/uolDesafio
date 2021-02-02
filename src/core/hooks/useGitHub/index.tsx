@@ -23,8 +23,8 @@ export default function useGitHub() {
   }
 
   async function getRepositoriesList(): Promise<void> {
-    setIsLoading(true);
     setRepositories(null);
+    setIsLoading(true);
     if (user) {
       await axios
         .get(`https://api.github.com/users/${user.login}/repos`)
@@ -37,8 +37,8 @@ export default function useGitHub() {
   }
 
   async function getStarredList(): Promise<void> {
-    setIsLoading(true);
     setRepositories(null);
+    setIsLoading(true);
     if (user) {
       await axios
         .get(`https://api.github.com/users/${user.login}/starred`)

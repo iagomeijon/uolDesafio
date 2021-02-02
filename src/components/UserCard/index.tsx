@@ -1,11 +1,14 @@
+import { useState } from 'react';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import RepositoryList from '../RepositoryList';
+import { onStarredClicked, onReposClicked } from './helpers';
 import { UserCardProps } from './interface';
 
 import styles from './styles.module.scss';
 
 const UserCard = (props: UserCardProps) => {
-  const { user, repositories, isLoading, handdleRepos, handleStarred } = props;
+  const { user, repositories, isLoading, handleRepos, handleStarred } = props;
+  const [listTitle, setListTitle] = useState<string>('');
 
   return (
     <div className={styles.container}>
@@ -30,14 +33,14 @@ const UserCard = (props: UserCardProps) => {
           <button
             type="button"
             className={styles.container__button}
-            onClick={handdleRepos}
+            onClick={() => onReposClicked(handleRepos, setListTitle)}
           >
             Repos
           </button>
           <button
             type="button"
             className={styles.container__button}
-            onClick={handleStarred}
+            onClick={() => onStarredClicked(handleStarred, setListTitle)}
           >
             Starred
           </button>
@@ -47,7 +50,9 @@ const UserCard = (props: UserCardProps) => {
         {isLoading ? (
           <CircularProgress size={35} />
         ) : (
-          repositories && <RepositoryList list={repositories} />
+          repositories && (
+            <RepositoryList list={repositories} listTitle={listTitle} />
+          )
         )}
       </div>
     </div>

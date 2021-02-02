@@ -21,8 +21,8 @@ const Home = () => {
           user={state.user}
           isLoading={state.isLoading}
           repositories={state.repositories}
-          handdleRepos={actions.getRepositoriesList}
-          handleStarred={() => alert('starred')}
+          handleRepos={actions.getRepositoriesList}
+          handleStarred={actions.getStarredList}
         />
       )}
       {state.userNotFound && <UserNotFound />}

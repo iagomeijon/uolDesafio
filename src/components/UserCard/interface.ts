@@ -3,7 +3,7 @@ import { User, Repository } from '@core/hooks/useGitHub/interface';
 export interface UserCardProps {
   user: User;
   repositories: Repository[];
-  handdleRepos: () => void;
+  handleRepos: () => void;
   handleStarred: () => void;
   isLoading: boolean;
 }

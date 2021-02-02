@@ -2,11 +2,11 @@ import { RepositoryListProps } from './interface';
 import styles from './styles.module.scss';
 
 const RepositoryList = (props: RepositoryListProps) => {
-  const { list } = props;
+  const { list, listTitle } = props;
 
   return (
     <div className={styles.container}>
-      <p className={styles.container__title}>Repositórios:</p>
+      <p className={styles.container__title}>{listTitle}</p>
       {list.length > 0 ? (
         <ul>
           {list.map((_repository, index) => {
