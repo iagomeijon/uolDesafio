@@ -6,7 +6,7 @@ Bem vindo!
 
 ## Ambiente
 
-É necessário a seguinte lista de software para rodar e desenvolver essa aplicação:
+É necessário a seguinte lista de softwares para rodar e desenvolver essa aplicação:
 - yarn ^1.22
 - Node ^12
 - npm ^6
