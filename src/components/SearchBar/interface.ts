@@ -1,3 +1,3 @@
 export interface searchBarProps {
-    getSearch: (search : string) => void;
+  getSearch: (search: string) => void;
 }

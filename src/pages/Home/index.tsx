@@ -8,14 +8,15 @@ import styles from './styles.module.scss';
 
 const Home = () => {
   const { actions, state } = useGitHub();
+
   function search(user: string) {
-    actions.clean();
     actions.getUser(user);
   }
+
   return (
     <div className={styles.main}>
       <SerachBar getSearch={search} />
-      {state.loadingSearch && <CircularProgress size={60} />}
+      {state.isLoadingSearch && <CircularProgress size={60} />}
       {state.user && (
         <UserCard
           user={state.user}

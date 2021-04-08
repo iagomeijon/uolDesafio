@@ -5,34 +5,45 @@ import { User, Repository } from './interface';
 export default function useGitHub() {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null);
-  const [userNotFound, setuUserNotFound] = useState<boolean>(false);
+  const [userNotFound, setUserNotFound] = useState<boolean>(false);
   const [repositories, setRepositories] = useState<Repository[] | null>(null);
-  const [loadingSearch, setLoadingSearch] = useState<boolean>(false);
+  const [isLoadingSearch, setIsLoadingSearch] = useState<boolean>(false);
+
+  function clean(): void {
+    setUserNotFound(false);
+    setIsLoading(false);
+    setIsLoadingSearch(false);
+    setRepositories(null);
+    setUser(null);
+  }
 
   async function getUser(userSearch: string): Promise<void> {
-    setLoadingSearch(true);
-    setuUserNotFound(false);
-    setUser(null);
-    await axios
-      .get<User>(`https://api.github.com/users/${userSearch}`)
-      .then((res) => {
-        setUser(res.data);
-      })
-      .catch((err) => setuUserNotFound(true))
-      .finally(() => setLoadingSearch(false));
+    clean();
+    setIsLoadingSearch(true);
+    try {
+      const res = await axios.get<User>(
+        `https://api.github.com/users/${userSearch}`,
+      );
+      setUser(res.data);
+    } catch (err) {
+      setUserNotFound(true);
+    } finally {
+      setIsLoadingSearch(false);
+    }
   }
 
   async function getRepositoriesList(): Promise<void> {
     setRepositories(null);
     setIsLoading(true);
     if (user) {
-      await axios
-        .get(`https://api.github.com/users/${user.login}/repos`)
-        .then((res) => {
-          setRepositories(res.data);
-        })
-        .catch()
-        .finally(() => setIsLoading(false));
+      try {
+        const res = await axios.get(
+          `https://api.github.com/users/${user.login}/repos`,
+        );
+        setRepositories(res.data);
+      } finally {
+        setIsLoading(false);
+      }
     }
   }
 
@@ -40,22 +51,15 @@ export default function useGitHub() {
     setRepositories(null);
     setIsLoading(true);
     if (user) {
-      await axios
-        .get(`https://api.github.com/users/${user.login}/starred`)
-        .then((res) => {
-          setRepositories(res.data);
-        })
-        .catch()
-        .finally(() => setIsLoading(false));
+      try {
+        const res = await axios.get(
+          `https://api.github.com/users/${user.login}/starred`,
+        );
+        setRepositories(res.data);
+      } finally {
+        setIsLoading(false);
+      }
     }
-  }
-
-  function clean(): void {
-    setuUserNotFound(false);
-    setIsLoading(false);
-    setLoadingSearch(false);
-    setRepositories(null);
-    setUser(null);
   }
 
   return {
@@ -64,7 +68,7 @@ export default function useGitHub() {
       user,
       userNotFound,
       repositories,
-      loadingSearch,
+      isLoadingSearch,
     },
     actions: {
       getUser,

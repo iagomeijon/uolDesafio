@@ -10,24 +10,16 @@
     "eject": "react-scripts eject",
     "format": "prettier --write **/*.{js,ts,tsx,scss,css,json}",
     "isready": "yarn format && yarn lint && yarn build",
-    "lint": "eslint '**/*.{js,ts,tsx}' --color --fix",
-    "reinstall": "yarn clean && yarn --force",
-    "rebuild": "yarn clean && yarn --force && yarn start",
-    "test": "jest",
-    "test:watch": "yarn test -- --watch",
-    "test:ci": "yarn test -- --coverage --runInBand"
+    "lint": "eslint '**/*.{js,ts,tsx}' --color --fix"
   },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
     "axios": "^0.21.1",
     "clsx": "^1.1.1",
-    "env-cmd": "^10.1.0",
-    "js-cookie": "^2.2.1",
     "next": "^10.0.3",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "sass": "^1.26.10",
-    "serve": "^11.3.2"
+    "sass": "^1.26.10"
   },
   "devDependencies": {
     "@types/node": "^14.0.22",
