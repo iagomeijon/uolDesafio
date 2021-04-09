@@ -5,7 +5,7 @@
   "scripts": {
     "clean": "rm -rfv yarn.lock pakage.lock.json dist/ node_modules/",
     "build": "react-scripts build",
-    "dev": "next --port 3001",
+    "dev": "next --port 3000",
     "start": "next --port 3000",
     "eject": "react-scripts eject",
     "format": "prettier --write **/*.{js,ts,tsx,scss,css,json}",
