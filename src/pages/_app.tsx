@@ -1,7 +1,7 @@
 import React from 'react';
 import App from 'next/app';
 import Head from 'next/head';
-
+import { GitHubProvider } from '@core/contexts/GitHubContext';
 import '@core/styles/global.scss';
 
 class ContingencyApp extends App {
@@ -12,7 +12,9 @@ class ContingencyApp extends App {
         <Head>
           <title>UOL</title>
         </Head>
-        <Component {...pageProps} />
+        <GitHubProvider>
+          <Component {...pageProps} />
+        </GitHubProvider>
       </>
     );
   }

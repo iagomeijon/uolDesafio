@@ -1,16 +1,15 @@
 import { useState } from 'react';
 import axios from 'axios';
-import { User, Repository } from './interface';
 
 export default function useGitHub() {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null);
-  const [userNotFound, setUserNotFound] = useState<boolean>(false);
   const [repositories, setRepositories] = useState<Repository[] | null>(null);
+  const [hasUserNotFound, setHasUserNotFound] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isLoadingSearch, setIsLoadingSearch] = useState<boolean>(false);
 
   function clean(): void {
-    setUserNotFound(false);
+    setHasUserNotFound(false);
     setIsLoading(false);
     setIsLoadingSearch(false);
     setRepositories(null);
@@ -26,7 +25,7 @@ export default function useGitHub() {
       );
       setUser(res.data);
     } catch (err) {
-      setUserNotFound(true);
+      setHasUserNotFound(true);
     } finally {
       setIsLoadingSearch(false);
     }
@@ -66,7 +65,7 @@ export default function useGitHub() {
     state: {
       isLoading,
       user,
-      userNotFound,
+      hasUserNotFound,
       repositories,
       isLoadingSearch,
     },
