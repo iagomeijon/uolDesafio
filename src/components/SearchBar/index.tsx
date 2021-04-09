@@ -1,10 +1,18 @@
+// MARK: Libs
 import { useState } from 'react';
+// MARK: Hooks
+import useStrings from '@core/hooks/useStrings';
+// MARK Interfaces
 import { searchBarProps } from './interface';
+// MARK: Styles
 import styles from './styles.module.scss';
 
-const searchBar = (props: searchBarProps) => {
+const SearchBar = (props: searchBarProps) => {
   const { getSearch } = props;
+  const { strings } = useStrings();
+  const { searchBar } = strings.components;
   const [searchText, setSearchText] = useState<string>('');
+
   const handleInput = (event) => {
     setSearchText(event.target.value);
   };
@@ -18,17 +26,17 @@ const searchBar = (props: searchBarProps) => {
       <input
         className={styles.container__input}
         onChange={handleInput}
-        placeholder="Pesquise o login de um usuário gitHub"
+        placeholder={searchBar.placeHolder}
       />
       <button
         className={styles.container__button}
         type="submit"
         onClick={handleSubmit}
       >
-        Buscar
+        {searchBar.button}
       </button>
     </div>
   );
 };
 
-export default searchBar;
+export default SearchBar;

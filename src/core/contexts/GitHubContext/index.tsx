@@ -1,5 +1,8 @@
+// MARK: Libs
 import { createContext, useContext } from 'react';
+// MARK: Hooks
 import useGitHub from '@core/hooks/useGitHub';
+// MARK: Interfaces
 import { GitHubContextInterface } from './interfaces';
 
 const GitHubContext = createContext<GitHubContextInterface>(

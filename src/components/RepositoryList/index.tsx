@@ -1,8 +1,14 @@
+// MARK: Hooks
+import useStrings from '@core/hooks/useStrings';
+// MARK: Interfaces
 import { RepositoryListProps } from './interface';
+// MARK: Styles
 import styles from './styles.module.scss';
 
 const RepositoryList = (props: RepositoryListProps) => {
   const { list, listTitle } = props;
+  const { strings } = useStrings();
+  const { repositoryList } = strings.components;
 
   return (
     <div className={styles.container}>
@@ -12,7 +18,7 @@ const RepositoryList = (props: RepositoryListProps) => {
           {list.map((_repository, index) => {
             return (
               <a
-                key={index}
+                key={`repository${index}`}
                 href={_repository.html_url}
                 target="_blank"
                 rel="noreferrer"
@@ -23,7 +29,7 @@ const RepositoryList = (props: RepositoryListProps) => {
           })}
         </ul>
       ) : (
-        <p>Sem repositórios encontrados :( </p>
+        <p>{repositoryList.notFounded} </p>
       )}
     </div>
   );

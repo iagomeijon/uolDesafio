@@ -1,9 +1,13 @@
+// MARK: Libs
 import React from 'react';
+// MARK: Hooks
 import { useGitHubContext } from '@core/contexts/GitHubContext';
+// MARK: Components
 import UserCard from '@components/UserCard';
 import UserNotFound from '@components/UserNotFound';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import SerachBar from '@components/SearchBar';
+import SearchBar from '@components/SearchBar';
+// MARK: Styles
 import styles from './styles.module.scss';
 
 const Home = () => {
@@ -24,7 +28,7 @@ const Home = () => {
 
   return (
     <div className={styles.main}>
-      <SerachBar getSearch={search} />
+      <SearchBar getSearch={search} />
       {isLoadingSearch && <CircularProgress size={60} />}
       {user && (
         <UserCard

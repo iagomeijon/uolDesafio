@@ -5,7 +5,7 @@
   "scripts": {
     "clean": "rm -rfv yarn.lock pakage.lock.json dist/ node_modules/",
     "build": "react-scripts build",
-    "dev": "next --port 3000",
+    "dev": "next --port 3001",
     "start": "next --port 3000",
     "eject": "react-scripts eject",
     "format": "prettier --write **/*.{js,ts,tsx,scss,css,json}",
@@ -16,6 +16,7 @@
     "@material-ui/core": "^4.11.3",
     "axios": "^0.21.1",
     "clsx": "^1.1.1",
+    "js-cookie": "^2.2.1",
     "next": "^10.0.3",
     "react": "16.13.1",
     "react-dom": "16.13.1",
