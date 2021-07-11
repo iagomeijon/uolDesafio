@@ -1,0 +1,9 @@
+{
+    "presets": [
+        "react-app",
+        "next/babel"
+      ],
+      "plugins": [
+        "react-css-modules"
+      ]
+}

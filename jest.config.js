@@ -1,14 +1,13 @@
+const {defaults} = require('jest-config');
 module.exports = {
-  roots: ['<rootDir>/src'],
-  collectCoverageFrom: ['<rootDir>/src/**/*.{ts,tsx}', '!**/*.d.ts'],
-  coverageDirectory: 'coverage',
-  testEnvironment: 'jsdom',
-  transform: {
-    '.+\\.(ts|tsx)$': 'ts-jest',
-  },
+    testPathIgnorePatterns: ['<rootDir>/.next/', '<rootDir>/node_modules/'],
+    bail: 1,
+    clearMocks: true,
+    collectCoverage: true,
+    collectCoverageFrom: ['components/**/*.js', 'pages/**/*.js'],
+    coverageReporters: ['lcov', 'text'],
+  moduleFileExtensions: [...defaults.moduleFileExtensions, 'ts', 'tsx'],
   moduleNameMapper: {
-    '@/(.*)': '<rootDir>/src/$1',
-    '\\.scss$': 'identity-obj-proxy',
-  },
-  setupFilesAfterEnv: ['jest-canvas-mock'],
+    "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
+  }
 };
