@@ -14,7 +14,7 @@
     "rebuild": "yarn clean && yarn --force && yarn start",
     "start": "react-scripts start",
     "test": "jest --env=jsdom",
-    "test:watch": "yarn test -- --watch",
+    "test:watch": "yarn test --watch",
     "test:ci": "yarn test -- --coverage --runInBand"
   },
   "dependencies": {
