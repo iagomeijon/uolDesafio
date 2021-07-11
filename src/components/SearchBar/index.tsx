@@ -1,7 +1,7 @@
 // MARK: Libs
 import { useState } from 'react';
 // MARK: Hooks
-import useStrings from '@core/hooks/useStrings';
+import useStrings from '../../core/hooks/useStrings';
 // MARK Interfaces
 import { searchBarProps } from './interface';
 // MARK: Styles
@@ -32,6 +32,8 @@ const SearchBar = (props: searchBarProps) => {
         className={styles.container__button}
         type="submit"
         onClick={handleSubmit}
+        id={"submitSearchButton"}
+        data-testid="submitSearchButton"
       >
         {searchBar.button}
       </button>

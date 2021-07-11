@@ -4,7 +4,7 @@ module.exports = {
     bail: 1,
     clearMocks: true,
     collectCoverage: true,
-    collectCoverageFrom: ['components/**/*.js', 'pages/**/*.js'],
+    collectCoverageFrom: ['components/**/*.js', 'pages/**/*.js', 'core/hooks/**/*.js'],
     coverageReporters: ['lcov', 'text'],
   moduleFileExtensions: [...defaults.moduleFileExtensions, 'ts', 'tsx'],
   moduleNameMapper: {
