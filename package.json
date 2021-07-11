@@ -6,6 +6,7 @@
     "clean": "rm -rfv yarn.lock pakage.lock.json dist/ node_modules/",
     "build": "react-scripts build",
     "dev": "next --port 3000",
+    "start": "next --port 3000",
     "eject": "react-scripts eject",
     "format": "prettier --write **/*.{js,ts,tsx,scss,css,json}",
     "isready": "yarn format && yarn lint && yarn build",
@@ -19,6 +20,7 @@
   },
   "dependencies": {
     "@material-ui/core": "^4.11.3",
+    "@types/babel__core": "^7.1.14",
     "axios": "^0.21.1",
     "babel": "^6.23.0",
     "babel-plugin-react-css-modules": "^5.2.6",
@@ -31,8 +33,7 @@
     "next": "^10.0.3",
     "react": "16.13.1",
     "react-dom": "16.13.1",
-    "sass": "^1.26.10",
-    "serve": "^11.3.2"
+    "sass": "^1.26.10"
   },
   "devDependencies": {
     "@babel/core": "^7.14.6",

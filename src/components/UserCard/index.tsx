@@ -1,9 +1,22 @@
-import { UserCardProps } from './interface';
+// MARK: Libs
+import { useState } from 'react';
+// MARK: Hooks
+import useStrings from '@core/hooks/useStrings';
+// MARK: components
+import CircularProgress from '@material-ui/core/CircularProgress';
 import RepositoryList from '../RepositoryList';
+// MARK: Helprs
+import { onStarredClicked, onReposClicked } from './helpers';
+// MARK: Interfaces
+import { UserCardProps } from './interface';
+// MARK: Styles
 import styles from './styles.module.scss';
 
 const UserCard = (props: UserCardProps) => {
-  const { user, repositories, handdleRepos, handleStarred } = props;
+  const { user, repositories, isLoading, handleRepos, handleStarred } = props;
+  const { strings } = useStrings();
+  const { userCard } = strings.components;
+  const [listTitle, setListTitle] = useState<string>('');
 
   return (
     <div className={styles.container}>
@@ -18,34 +31,38 @@ const UserCard = (props: UserCardProps) => {
       <div className={styles.container__row}>
         <div>
           <p className={styles.container__infoText}>
-            Repositórios públicos: {user.public_repos}
+            {`${userCard.subTitle1} ${user.public_repos}`}
           </p>
           <p className={styles.container__infoText}>
-            Seguidores: {user.followers}
+            {`${userCard.subTitle2} ${user.followers}`}
           </p>
         </div>
         <div>
           <button
             type="button"
             className={styles.container__button}
-            onClick={handdleRepos}
+            onClick={() => onReposClicked(handleRepos, setListTitle)}
           >
-            Repos
+            {userCard.button1}
           </button>
           <button
             type="button"
             className={styles.container__button}
-            onClick={handleStarred}
+            onClick={() => onStarredClicked(handleStarred, setListTitle)}
           >
-            Starred
+            {userCard.button2}
           </button>
         </div>
       </div>
-      {repositories && (
-        <div className={styles.container__listBox}>
-          <RepositoryList list={repositories} />
-        </div>
-      )}
+      <div className={styles.container__listBox}>
+        {isLoading ? (
+          <CircularProgress size={35} />
+        ) : (
+          repositories && (
+            <RepositoryList list={repositories} listTitle={listTitle} />
+          )
+        )}
+      </div>
     </div>
   );
 };

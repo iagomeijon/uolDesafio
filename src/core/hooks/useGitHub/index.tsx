@@ -1,56 +1,79 @@
+// MARK: Libs
 import { useState } from 'react';
 import axios from 'axios';
-import { User, Repository } from './interface';
 
 export default function useGitHub() {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
   const [user, setUser] = useState<User | null>(null);
-  const [userNotFound, setuUserNotFound] = useState<boolean>(false);
   const [repositories, setRepositories] = useState<Repository[] | null>(null);
+  const [hasUserNotFound, setHasUserNotFound] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoadingSearch, setIsLoadingSearch] = useState<boolean>(false);
 
-  async function getUser(userSearch: string): Promise<void> {
-    setIsLoading(true);
-    setuUserNotFound(false);
+  function clean(): void {
+    setHasUserNotFound(false);
+    setIsLoading(false);
+    setIsLoadingSearch(false);
+    setRepositories(null);
     setUser(null);
-    await axios
-      .get<User>(`https://api.github.com/users/${userSearch}`)
-      .then((res) => {
-        setUser(res.data);
-      })
-      .catch((err) => setuUserNotFound(true))
-      .finally(() => setIsLoading(false));
   }
 
-  async function getRepos(): Promise<void> {
-    setIsLoading(true);
-    if (user) {
-      await axios
-        .get(`https://api.github.com/users/${user.login}/repos`)
-        .then((res) => {
-          setRepositories(res.data);
-        })
-        .catch()
-        .finally(() => setIsLoading(false));
+  async function getUser(userSearch: string): Promise<void> {
+    clean();
+    setIsLoadingSearch(true);
+    try {
+      const res = await axios.get<User>(
+        `https://api.github.com/users/${userSearch}`,
+      );
+      setUser(res.data);
+    } catch (err) {
+      setHasUserNotFound(true);
+    } finally {
+      setIsLoadingSearch(false);
     }
   }
 
-  function clean(): void {
-    setuUserNotFound(false);
-    setIsLoading(false);
+  async function getRepositoriesList(): Promise<void> {
     setRepositories(null);
-    setUser(null);
+    setIsLoading(true);
+    if (user) {
+      try {
+        const res = await axios.get(
+          `https://api.github.com/users/${user.login}/repos`,
+        );
+        setRepositories(res.data);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+  }
+
+  async function getStarredList(): Promise<void> {
+    setRepositories(null);
+    setIsLoading(true);
+    if (user) {
+      try {
+        const res = await axios.get(
+          `https://api.github.com/users/${user.login}/starred`,
+        );
+        setRepositories(res.data);
+      } finally {
+        setIsLoading(false);
+      }
+    }
   }
 
   return {
     state: {
       isLoading,
       user,
-      userNotFound,
+      hasUserNotFound,
       repositories,
+      isLoadingSearch,
     },
     actions: {
       getUser,
-      getRepos,
+      getRepositoriesList,
+      getStarredList,
       clean,
     },
   };

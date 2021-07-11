@@ -16,7 +16,7 @@ html {
   body {
     height: inherit;
     width: inherit;
-
+    margin: 0;
     #wrapper {
       min-height: 100vh;
       overflow: hidden;
@@ -76,9 +76,9 @@ button:active {
   outline:none;
 
   }
-  
+
   button:focus {
   border: none;
   outline:none;
-  
+
   }

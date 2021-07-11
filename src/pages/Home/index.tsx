@@ -1,30 +1,45 @@
+// MARK: Libs
 import React from 'react';
-import useGitHub from '@core/hooks/useGitHub';
+// MARK: Hooks
+import { useGitHubContext } from '@core/contexts/GitHubContext';
+// MARK: Components
 import UserCard from '@components/UserCard';
 import UserNotFound from '@components/UserNotFound';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import SerachBar from '@components/SearchBar';
+import SearchBar from '@components/SearchBar';
+// MARK: Styles
 import styles from './styles.module.scss';
 
 const Home = () => {
-  const { actions, state } = useGitHub();
-  function search(user: string) {
-    actions.clean();
-    actions.getUser(user);
+  const {
+    user,
+    isLoading,
+    hasUserNotFound,
+    isLoadingSearch,
+    repositories,
+    getUser,
+    getRepositoriesList,
+    getStarredList,
+  } = useGitHubContext();
+
+  function search(userName: string) {
+    getUser(userName);
   }
+
   return (
     <div className={styles.main}>
-      <SerachBar getSearch={search} />
-      {state.isLoading && <CircularProgress size={60} />}
-      {state.user && (
+      <SearchBar getSearch={search} />
+      {isLoadingSearch && <CircularProgress size={60} />}
+      {user && (
         <UserCard
-          user={state.user}
-          repositories={state.repositories}
-          handdleRepos={actions.getRepos}
-          handleStarred={() => alert('starred')}
+          user={user}
+          isLoading={isLoading}
+          repositories={repositories}
+          handleRepos={getRepositoriesList}
+          handleStarred={getStarredList}
         />
       )}
-      {state.userNotFound && <UserNotFound />}
+      {hasUserNotFound && <UserNotFound />}
     </div>
   );
 };
