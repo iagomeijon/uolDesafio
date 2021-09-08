@@ -4,10 +4,19 @@ module.exports = {
     bail: 1,
     clearMocks: true,
     collectCoverage: true,
-    collectCoverageFrom: ['components/**/*.js', 'pages/**/*.js', 'core/hooks/**/*.js'],
-    coverageReporters: ['lcov', 'text'],
+    collectCoverageFrom: [
+      "**/*.tsx" ],
+    coverageReporters: ["json", "lcov", "text"],
   moduleFileExtensions: [...defaults.moduleFileExtensions, 'ts', 'tsx'],
   moduleNameMapper: {
     "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules"
-  }
+  },
+  coverageThreshold: {
+    global: {
+      statements: 100,
+      branches: 100,
+      functions: 100,
+      lines: 100,
+    },
+  },
 };

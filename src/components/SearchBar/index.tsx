@@ -27,12 +27,13 @@ const SearchBar = (props: searchBarProps) => {
         className={styles.container__input}
         onChange={handleInput}
         placeholder={searchBar.placeHolder}
+        id="searchInput"
       />
       <button
         className={styles.container__button}
         type="submit"
         onClick={handleSubmit}
-        id={"submitSearchButton"}
+        id="submitSearchButton"
         data-testid="submitSearchButton"
       >
         {searchBar.button}
