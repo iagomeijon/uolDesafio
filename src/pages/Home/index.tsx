@@ -2,6 +2,7 @@
 import React from 'react';
 // MARK: Hooks
 import { useGitHubContext } from '@core/contexts/GitHubContext';
+import useCarsApi from '@core/hooks/useCarsApi';
 // MARK: Components
 import UserCard from '@components/UserCard';
 import UserNotFound from '@components/UserNotFound';
@@ -22,8 +23,11 @@ const Home = () => {
     getStarredList,
   } = useGitHubContext();
 
-  function search(userName: string) {
+  const { actions, state } = useCarsApi();
+
+  async function search(userName: string) {
     getUser(userName);
+    await actions.getCarList();
   }
 
   return (
@@ -38,6 +42,15 @@ const Home = () => {
           handleRepos={getRepositoriesList}
           handleStarred={getStarredList}
         />
+      )}
+      {state.carsList.length > 0 ? (
+        <ul>
+          {state.carsList.map((_car) => {
+            return <li key={_car.id}>{_car.modelo}</li>;
+          })}
+        </ul>
+      ) : (
+        <h1>sem lista</h1>
       )}
       {hasUserNotFound && <UserNotFound />}
     </div>
